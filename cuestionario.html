@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+      <div class="container">
+          
+          <div class="row">
+              <div class="offset-2 col-8">
+                <h1>Cuestionario</h1>
+                  <form @submit.prevent="getResultado()">
+                      <div class="form-group" >
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >1. ¿Sientes que tu pareja constantemente te está controlando “por amor?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst1_1" v-model="cst.p1" value="Si" required>
+                                      <label class="form-check-label" for="cst1_1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst1_2" v-model="cst.p1" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst1_3" v-model="cst.p1" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst1_4" v-model="cst.p1" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >2. ¿Te acusa de infidelidad o de que actúas en forma sospechosa?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst2_1" v-model="cst.p2" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst2_2" v-model="cst.p2" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst2_3" v-model="cst.p2" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst2_4" v-model="cst.p2" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >3. ¿Has perdido contacto con amigos, familiares, compañeras/os de tu escuela o trabajo para evitar que tu pareja se moleste?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst3_1" v-model="cst.p3" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst3_2" v-model="cst.p3" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst3_3" v-model="cst.p3" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst3_4" v-model="cst.p3" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >4. ¿Te critica y humilla en público o en privado, opina negativamente sobre tu apariencia, tu forma de ser o el modo en que te vistes?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst4_1" v-model="cst.p4" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst4_2" v-model="cst.p4" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst4_3" v-model="cst.p4" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst4_4" v-model="cst.p4" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >5. ¿Tu pareja tiene cambios bruscos de humor o se comporta distinto contigo en público, como si fuera otra persona?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst5_1" v-model="cst.p5" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst5_2" v-model="cst.p5" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst5_3" v-model="cst.p5" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst5_4" v-model="cst.p5" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >6. ¿Sientes que está en permanente tensión y que, hagas lo que hagas, el se irrita o te culpabiliza de sus cambios?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst6_1" v-model="cst.p6" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst6_2" v-model="cst.p6" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst6_3" v-model="cst.p6" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst6_4" v-model="cst.p6" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >7. ¿Te ha golpeado con sus manos, te ha jaloneado o te ha lanzado cosas cuando se enoja o cuando discuten?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst7_1" v-model="cst.p7" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst7_2" v-model="cst.p7" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst7_3" v-model="cst.p7" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst7_4" v-model="cst.p7" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >8. ¿Te ha amenazado alguna vez con un objeto o armas, o con matarse él, a ti o a algún miembro de la familia si no le obedeces?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst8_1" v-model="cst.p8" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst8_2" v-model="cst.p8" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst8_3" v-model="cst.p8" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst8_4" v-model="cst.p8" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >9. ¿Sientes que cedes a sus peticiones sexuales por temor, o te ha forzado a tener relaciones, amenazándote que si no tiene relaciones contigo, entonces se va con otra?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst9_1" v-model="cst.p9" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst9_2" v-model="cst.p9" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst9_3" v-model="cst.p9" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst9_4" v-model="cst.p9" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >10. Después de un episodio violento, ¿se muestra cariñoso y atento, te regala cosas y te promete que nunca más volverá a pegarte o insultarte y te dice que “todo cambiará”?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst10_1" v-model="cst.p10" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst10_2" v-model="cst.p10" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst10_3" v-model="cst.p10" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst10_4" v-model="cst.p10" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >11. ¿Has buscado o has recibido ayuda por lesiones que él te ha causado? (primeros auxilios, atención médica o legal)</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst11_1" v-model="cst.p11" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst11_2" v-model="cst.p11" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst11_3" v-model="cst.p11" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst11_4" v-model="cst.p11" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-12">
+                                  <h5 >12. ¿Es violento con otras personas o se pelea a golpes con otros hombres?</h5>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst12_1" v-model="cst.p12" value="Si" required>
+                                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                                  </div>
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst12_2" v-model="cst.pp12" value="A veces" required>
+                                      <label class="form-check-label" for="inlineCheckbox2">A veces</label>
+                                  </div>
+                              </div>                            
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst12_3" v-model="cst.p12" value="Rara vez">
+                                      <label class="form-check-label" for="inlineCheckbox3">Rara Vez</label>
+                                  </div>
+                              </div>                                
+                              <div class="col-3">
+                                  <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="cst12_4" v-model="cst.p12" value="No">
+                                      <label class="form-check-label" for="inlineCheckbox3">No</label>
+                                  </div>
+                              </div>                                
+                          </div>
+                      </div>
+                 <br>
+                      <button type="submit" class="btn btn-primary btn-lg btn-block">Obten los resultados</button>
+                  </form>
+               
+                    
+  
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+
+<script>
+var app = new Vue({
+    el: '#app',
+    data() {
+        return {
+            cst:{},
+            resultado: 0,
+        }
+    },
+    methods: {
+    getResultado(){
+
+        
+        var fResultado = 0;
+        var cantidad = 0;
+        var errores ="";
+        Object.keys(this.cst).forEach(res => {
+            cantidad++;
+            if(this.cst[res]=="Si")fResultado+=3;
+            if(this.cst[res]=="A veces")fResultado+=2;
+            if(this.cst[res]=="Rara Vez")fResultado+=1;
+            if(this.cst[res]=="No")fResultado+=0;
+            
+        });
+        if(cantidad<12){
+            Swal.fire({
+            title: 'Tienes campos sin completar',
+            text: 'Es importante que completes todos los campos',
+            icon: 'error',
+            confirmButtonText: 'Lo entiendo'
+        })
+        }else{
+            Swal.fire({
+            title: '¡CUIDADO!',
+            text: 'Pide asesoría y apoyo, tu seguridad puede estar en riesgo.',
+            icon: 'warning',
+            confirmButtonText: 'Lo entiendo'
+        })
+        
+        console.log(fResultado);
+        if(fResultado>=0 && fResultado<=5){
+            Swal.fire({
+            title: 'Relación no abusiva',
+            text: 'Tal vez existan algunos problemas que se presentan entre las parejas, pero se resuelven sin violencia',
+            icon: 'info',
+            confirmButtonText: 'Lo entiendo'
+        })
+            
+        }
+        else if(fResultado>=6 && fResultado<=15){
+            Swal.fire({
+            title: 'Platica con tu pareja',
+            text: 'Revisa las reglas de tu relación.',
+            icon: 'info',
+            confirmButtonText: 'Lo entiendo'
+        })
+            
+        }
+        else if(fResultado>=16 && fResultado<=25){
+            Swal.fire({
+            title: 'Está viviendo violencia',
+            text: 'ESTÁ VIVIENDO VIOLENCIA Tu relación tiene señales de abuso de poder.',
+            icon: 'warning',
+            confirmButtonText: 'Lo entiendo'
+        })
+        }
+        else if(fResultado>=26){
+            Swal.fire({
+            title: '¡CUIDADO!',
+            text: 'Pide asesoría y apoyo, tu seguridad puede estar en riesgo.',
+            icon: 'warning',
+            confirmButtonText: 'Lo entiendo'
+        })
+        }
+        
+        this.resultado = fResultado;
+    }
+    }
+    },
+})
+</script>
+</body>
+</html>

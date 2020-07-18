@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design for Bootstrap</title>
+  <title>Violencia contra la mujer</title>
   <!-- MDB icon -->
   <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
   <!-- Font Awesome -->
@@ -17,14 +17,14 @@
   <!-- Material Design Bootstrap -->
   <link rel="stylesheet" href="css/mdb.min.css">
   <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/extra.css">
 </head>
 
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a href="index.html" class="navbar-brand">
-      <img src="Icon/icono.svg" style="width: 20%;" alt="EnlaceUPSIN">
+      <img src="Icon/icono.svg" style="width: 20%;">
       911 Mujeres
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -47,20 +47,27 @@
             <a class="dropdown-item" href="alumnoLogin.html">Psicológico</a>
           </div>
         </li>
-        <li>
-          <a href="">Cuestionario</a>
+        <li class="nav-item active">
+          <a href="cuestionario.html" class="nav-link">Cuestionario</a>
         </li>
       </ul>
     </div>
   </nav>
 
+  <div class="justify-content-center">
   <!--Este llama a un número de ayuda-->
-  <button type="button" class="btn btn-danger">Ayuda</button> 
+  <a href="tel:+526271433092">
+    <img src="img/svg/ayuda.svg" class="btn ml-5" style="width: 70%;" alt="Ayuda">
+  </a> 
+  <p class="text-center">llama a alguien</p>
   <!--Este sirve en el caso de que si ven algo sospechoso lo  avisen a un grupo o conocido por mensaje-->
-  <button type="button" class="btn btn-default">Avisar</button>
-
+  <a class="col-xs-12">
+    <img src="img/svg/alerta.svg" class="btn ml-5" style="width: 70%;" alt="Alerta">
+   <p class="text-center">Alerta sobre algo</p>
+  </a>
+</div>
   <!--Aqui va el mapa-->
-  
+
 
   <!-- jQuery -->
   <script type="text/javascript" src="js/jquery.min.js"></script>
