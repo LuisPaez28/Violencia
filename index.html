@@ -18,13 +18,16 @@
   <link rel="stylesheet" href="css/mdb.min.css">
   <!-- Your custom styles (optional) -->
   <link rel="stylesheet" href="css/extra.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZupJe2lSfESxP329pev0lsdc6GL0tO2w&libraries=&v=weekly"
+    defer></script>
 </head>
 
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a href="index.html" class="navbar-brand">
-      <img src="img/svg/icono4.svg" style="width: 20%;">
+      <img src="img/svg/icono.svg" style="width: 20%;">
       911 Mujeres
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -38,14 +41,13 @@
           <a href="" class="nav-link">Mapa</a>
         </li>
         <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <a class="nav-link dropdown-toggle" href="legal.html" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Asesoramiento
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="legal.html">Legal</a>
-            <a class="dropdown-item" href="alumnoLogin.html">Psicológico</a>
-          </div>
+        </li>
+        <li class="nav-item active">
+          <a href="testimonios.html" class="nav-link">Testimonios</a>
         </li>
         <li class="nav-item active">
           <a href="cuestionario.html" class="nav-link">Cuestionario</a>
@@ -55,17 +57,21 @@
   </nav>
 
   <div class="justify-content-center">
+    <a onclick="getLocation()">
+      <img src="img/svg/ayuda.svg" class="btn ml-5" style="width: 70%;" alt="Ayuda">
+    </a>
+    <p class="text-center">Ayuda</p>
+    <!--Este sirve en el caso de que si ven algo sospechoso lo  avisen a un grupo o conocido por mensaje-->
+    <a class="col-xs-12" href="https://api.whatsapp.com/send?phone=5216271433092&text=Alerta%20acerca%20de:">
+      <img src="img/svg/alerta.svg" class="btn ml-5" style="width: 70%;" alt="Alerta">
+    </a>
+    <p class="text-center">Alerta sobre algo</p>
+  </div>
   <!--Este llama a un número de ayuda-->
   <a href="tel:+526271433092">
-    <img src="img/svg/ayuda.svg" class="btn ml-5" style="width: 70%;" alt="Ayuda">
-  </a> 
-  <p class="text-center">llama a alguien</p>
-  <!--Este sirve en el caso de que si ven algo sospechoso lo  avisen a un grupo o conocido por mensaje-->
-  <a class="col-xs-12" href="https://api.whatsapp.com/send?phone=5216271433092&text=Alerta%20acerca%20de:">
-    <img src="img/svg/alerta.svg" class="btn ml-5" style="width: 70%;" alt="Alerta">
+    <img src="img/svg/llamada.svg" class="btn ml-5" style="width: 70%;" alt="Ayuda">
   </a>
-  <p class="text-center">Alerta sobre algo</p>
-</div>
+  <p class="text-center">llama a alguien</p>
   <!--Aqui va el mapa-->
 
 
@@ -80,6 +86,44 @@
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
 
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(showPosition);
+      } else {
+        alert("error no se puede acceder a la ubicación");
+      }
+    }
+
+    function showPosition(position) {
+      var geocoder = new google.maps.Geocoder();
+      var latlng = {
+        lat: parseFloat(position.coords.latitude),
+        lng: parseFloat(position.coords.longitude)
+      };
+      geocoder.geocode(
+        {
+          location: latlng
+        },
+        function (results, status) {
+          if (status === "OK") {
+            if (results[0]) {
+
+
+              console.log(results[0].formatted_address);
+
+              window.open('https://api.whatsapp.com/send?phone=5216271433092&text=Necesito ayuda, esta es mi dirección ' + results[0].formatted_address);
+            } else {
+              window.alert("No results found");
+            }
+          } else {
+            window.alert("Geocoder failed due to: " + status);
+          }
+        }
+      );
+
+    }
+  </script>
 </body>
 
 </html>
