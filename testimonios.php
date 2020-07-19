@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.rawgit.com/axios/axios/master/dist/axios.min.js"></script>
-
 </head>
 
 <body>
