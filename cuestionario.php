@@ -23,7 +23,7 @@
 </head>
 
 <body>
-
+<?php include('nav.html') ?>
 
     <div id="app">
         <div class="container">

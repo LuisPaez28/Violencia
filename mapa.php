@@ -23,37 +23,7 @@
 </head>
 
 <body>
-  <!--BARRA DE NAVEGACION-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="index.html" class="navbar-brand">
-      <img src="img/svg/icono.svg" style="width: 20%;">
-      911 Mujeres
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a href="mapa.html" class="nav-link">Mapa</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="License.pdf"  role="button"
-            aria-haspopup="true" aria-expanded="false">
-            Asesoramiento
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a href="testimonios.html" class="nav-link">Testimonios</a>
-        </li>
-        <li class="nav-item active">
-          <a href="cuestionario.html" class="nav-link">Cuestionario</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <?php require('nav.html') ?>
   <!--mAPITA-->
   <div class="jumbotron">
     <!--Titutlo-->
